@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-@ToString
+@ToString(exclude="member")
 @Entity
 public class Board {
 	@Id
@@ -21,4 +21,15 @@ public class Board {
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date createDate;
 	private Long cnt;
+
+	@ManyToOne
+	@JoinColumn(name = "MEMBER_ID", nullable = false) //nullable=false > INNER JOIN
+	private Member member;
+
+	//setMember 를 재정의 해야만 양방향 테스트가 된다
+	public void setMember(Member member) {
+		this.member = member;
+		//멤바가 보드 리스트를 포함하게 추가
+		member.getBoardList().add(this);
+	}
 }

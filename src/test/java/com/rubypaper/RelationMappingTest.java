@@ -63,11 +63,11 @@ public class RelationMappingTest {
 			boardRepo.save(board);
 		}
 		//memberRepo.save(member2);
-	}
-	
+	/*}
+
 	//p307 board 를 조회하면 member 까지 조회됨
 	@Test
-	public void board_상세글조회() {
+	public void board_상세글조회() {*/
 		Board board = boardRepo.findById(5L).get();
 
 		System.out.println("[ " + board.getSeq() + "번 게시글 정보 ]");
@@ -121,11 +121,11 @@ public class RelationMappingTest {
 		}
 		//한번에 등록한다 - member 가 board 를 품고 있음
 		memberRepo.save(member2);
-	}
+	/*}
 
 	//멤버로 보드 데이터까지 조회
 	@Test
-	public void 양방향매핑_멤버조회로_보드까지_조회() {
+	public void 양방향매핑_멤버조회로_보드까지_조회() {*/
 		Member member = memberRepo.findById("member1").get();
 
 		System.out.println("===========================");
@@ -135,11 +135,11 @@ public class RelationMappingTest {
 		for (Board board : list) {
 			System.out.println(board.toString());
 		}
-	}
+	/*}
 
 	//p320 영속성 전이 - 멤버 삭제하면 관련된 보드도 삭제
 	@Test
-	public void 멤버삭제하니_보드도_삭제되는구나(){
+	public void 멤버삭제하니_보드도_삭제되는구나(){*/
 		memberRepo.deleteById("member2");
 	}
 	

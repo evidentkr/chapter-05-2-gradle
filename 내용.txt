@@ -1,2 +1,4 @@
 DynamicQueryTest > 쿼리dsl 을 사용하여 검색
+테스트를 돌리기 위해 Board member 에 다대다 코드 주석 - 관련 소스 주석
+
 RelationMappingTest > 다대다 설정 테스트

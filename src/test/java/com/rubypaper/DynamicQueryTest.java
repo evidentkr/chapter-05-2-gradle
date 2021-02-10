@@ -2,6 +2,8 @@ package com.rubypaper;
 
 import java.util.Date;
 
+import com.rubypaper.domain.BoardDsl;
+import com.rubypaper.domain.QBoardDsl;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +29,7 @@ public class DynamicQueryTest {
 	@Before
 	public void dataPrepare() {
 		for (int i = 1; i <= 200; i++) {
-			Board board = new Board();
+			BoardDsl board = new BoardDsl();
 			board.setTitle("테스트 제목 " + i);
 			board.setWriter("테스터");
 			board.setContent("테스트 내용 " + i);
@@ -51,7 +53,7 @@ public class DynamicQueryTest {
 		
 		BooleanBuilder builder = new BooleanBuilder();
 
-		QBoard qboard = QBoard.board;
+		QBoardDsl qboard = QBoardDsl.boardDsl;
 
 		if (searchCondition.equals("TITLE")) {
 			builder.and(qboard.title.like("%" + searchKeyword + "%"));
@@ -61,10 +63,10 @@ public class DynamicQueryTest {
 
 		Pageable paging = PageRequest.of(0, 5);
 
-		Page<Board> boardList = boardRepo.findAll(builder, paging);
+		Page<BoardDsl> boardList = boardRepo.findAll(builder, paging);
 
 		System.out.println("검색 결과");
-		for (Board board : boardList) {
+		for (BoardDsl board : boardList) {
 			System.out.println("--->" + board.toString());
 		}
 
